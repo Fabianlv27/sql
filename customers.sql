@@ -106,5 +106,43 @@ group by c.customerNumber;
 
 select checkNumber, c.customerNumber,o.status  from payments p 
 join customers c on c.customerNumber=p.customerNumber
+join orders o on o.customerNumber=c.customerNumber;
+
+-- cuantos productos distintos ha vendido cada empleado
+select firstName,lastName,count(distinct od.productCode) differents_Products from employees e 
+join customers c on c.salesRepEmployeeNumber=e.employeeNumber
 join orders o on o.customerNumber=c.customerNumber
+join orderdetails od on od.orderNumber=o.orderNumber
+ group by e.firstName,e.lastName
+order by differents_Products desc;
+
+-- compruevo que un cliente puede pedir el mismo producto en diferentes ordenes
+select firstName,lastName,od.productCode, count(od.productCode) from employees e 
+join customers c on c.salesRepEmployeeNumber=e.employeeNumber
+join orders o on o.customerNumber=c.customerNumber
+join orderdetails od on od.orderNumber=o.orderNumber
+group by firstName,lastName,od.productCode;
+
+-- agarramos un ejemplo concreto para comprobar que la 
+-- suma de todas las ordenes de leslie te la lo mismo que si no le puesieras un count
+select sum(uno.dis) from (select firstName,lastName,od.productCode, count(od.productCode) dis from employees e 
+join customers c on c.salesRepEmployeeNumber=e.employeeNumber
+join orders o on o.customerNumber=c.customerNumber
+join orderdetails od on od.orderNumber=o.orderNumber
+where firstName='Leslie' and lastName ='Jennings'
+group by firstName,lastName,od.productCode
+order by count(od.productCode))uno 
+group by uno.firstName
+;
+
+
+select firstName,lastName,od.productCode, count(od.productCode) dis from employees e 
+join customers c on c.salesRepEmployeeNumber=e.employeeNumber
+join orders o on o.customerNumber=c.customerNumber
+join orderdetails od on od.orderNumber=o.orderNumber
+where firstName='Leslie' and lastName ='Jennings'
+group by firstName,lastName,od.productCode
+order by count(od.productCode)
+
+-- dos consultas
 
