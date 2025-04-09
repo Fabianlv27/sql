@@ -48,3 +48,5 @@ select count(distinct(productVendor) ) from products;
  group by year(orderDate); 
  
  select * from orders;
+ 
+ 

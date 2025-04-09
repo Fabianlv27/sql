@@ -56,8 +56,9 @@ join employees e on e.employeeNumber=c.salesRepEmployeeNumber
 group by e.firstName,e.lastName,e.officeCode
 order by e.officeCode,cant desc) tb2
 order by e.officeCode,cant desc) tb2
-group by tb2.officeCode)tb3
-on tb3.maxcant=tb1.cant and tb3.officeCode=tb1.officeCode;
+on tb3.maxcant=tb1.cant and tb3.officeCode=tb1.officeCode
+group by tb2.officeCode;
+
 
 -- otro metodo
 select e.employeeNumber,e.officeCode,sum(p.amount)cant
@@ -73,18 +74,34 @@ and p.customerNumber = c.customerNumber
 group by e.employeeNumber,e.officeCode)R
 group by R.officeCode;
 
-select R2.officeCode, R2.cant from (select e.employeeNumber,e.officeCode,sum(p.amount)cant
+-- l
+select e.employeeNumber,e.firstName,e.lastName,e.officeCode,sum(p.amount)cant
 from employees e, payments p, customers c
 where e.employeeNumber = c.salesRepEmployeeNumber
 and p.customerNumber = c.customerNumber
-group by e.employeeNumber,e.officeCode) R1,(select R.officeCode,max(R.cant) cant from(select e.employeeNumber empleado,e.firstName,e.lastName,e.officeCode,sum(p.amount)cant
+group by e.employeeNumber;
+
+-- 2
+select R.officeCode,max(R.cant) cant from(select e.employeeNumber empleado,e.firstName,e.lastName,e.officeCode,sum(p.amount)cant
+from employees e, payments p, customers c
+where e.employeeNumber = c.salesRepEmployeeNumber
+and p.customerNumber = c.customerNumber
+group by e.employeeNumber,e.officeCode)R
+group by R.officeCode;
+
+select R2.officeCode,R1.firstName,R1.lastName, R1.cant 
+from (select e.employeeNumber,e.firstName,e.lastName,e.officeCode,sum(p.amount)cant
+from employees e, payments p, customers c
+where e.employeeNumber = c.salesRepEmployeeNumber
+and p.customerNumber = c.customerNumber
+group by e.employeeNumber) R1,
+(select R.officeCode,max(R.cant) cant from(select e.employeeNumber empleado,e.firstName,e.lastName,e.officeCode,sum(p.amount)cant
 from employees e, payments p, customers c
 where e.employeeNumber = c.salesRepEmployeeNumber
 and p.customerNumber = c.customerNumber
 group by e.employeeNumber,e.officeCode)R
 group by R.officeCode) R2
-where R2.officeCode=R1.officeCode and R2.cant=R1.cant
-group by 
+where R2.officeCode=R1.officeCode and R2.cant=R1.cant;
 
 
 

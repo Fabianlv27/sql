@@ -1,32 +1,8 @@
 
-SELECT * FROM offices where addressLine2 is null;
-select * from offices ;
-select * from employees order by firstName;
-/*todos los empleados que trabajan en Tokio*/
-select distinct(country) as Paises from offices;
-select distinct(employees.firstName) from employees,offices where offices.country='USA';
-/*Todos los empleados que trabajan en USA y sus ciudades*/
-select * from employees where employeeNumber=1056;
-select employees.firstName,employees.lastName, employees.email,offices.city 
-from offices
-join employees on employees.officeCode=offices.officeCode 
-/*Si no colocamos que solo me muestre cuando la clave foranea sea igual que la primaria, te muestra
-por los nombres y apellidos por cada pais y cada combinacion posible*/
- where offices.country="USA";
- select * from customers c ,orders o where c.customerNumber=363;
- 
- /*total de compras (suma de dinero) y cantidad de ordenes hechas por cada pais*/
-
-select country,count(p.amount) NumeroDePedidos,sum(p.amount) Suma, avg(p.amount) Promedio
- from customers c ,payments p 
- where c.customerNumber=p.customerNumber
- group by c.country
- ;
 /*Cuantas personas a su acrago tiene cada responsable*/
-
 select count(reportsTo )from employees group by reportsTo ;
 
-
+/*Muestro los nombres de los empleados y su cantidad de empleados*/
 select firstName,lastName,count(*)
  from employees 
  where reportsTo 
@@ -45,23 +21,15 @@ group by P.productLine
 order by S desc
 limit 0,1;
 
- /*Cuantas personas tiene a su cargo cada persona*/
- /*Primero agrupamos por reports to y cuantas veces aparecen cada uno*/
+ -- Jefes y las personas a las que manda
 select e2.firstName,count(*) from employees
 join employees e2 on employees.reportsTo=e2.employeeNumber
 group by e2.employeeNumber
 ;
 
-select P.productLine,sum(OD.quantityOrdered) S
-from orders O
-join orderdetails OD on OD.orderNumber=O.orderNumber
-join products P on P.productCode=OD.productCode
-group by P.productLine
-order by S desc
-limit 0,1;
-
 -- cuantos empleados tengo por cada jobtitle
 select distinct(jobTitle) ,count(*) from employees group by jobTitle;
+
 -- La ciudad de las oficinas en la que tengo mas empleados
 select O.city,count(employeeNumber) Cantidad
 from offices O 
@@ -75,11 +43,6 @@ limit 0,1;
  join products P on P.productCode=OD.productCode
  group by P.productVendor
  order by Total_Vendido desc;
-
- 
- select productName,count(productCode) from products group by productName;
-select productVendor, sum(buyPrice) from products group by productVendor;
-select * from payments;
 
 -- top 5 empleados que generan mas dinero
 select salesRepEmployeeNumber,firstName , lastName,sum(P.amount) TotalVendido from customers C

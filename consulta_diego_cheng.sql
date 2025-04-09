@@ -1,0 +1,2 @@
+-- Precio del producto que ofrece el proovedor ,de la tienda en el que se ha pagado y la diferencia entre abos de cada producto-.
+select productName,MSRP,buyPrice, (MSRP-buyPrice)diferencia  from products;
