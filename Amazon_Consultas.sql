@@ -51,41 +51,67 @@ from
     Media M
 where
     M.sub = 'mitele'
-Select
-    banner,
-    title,
-    idMedia,
-    sub,
-    description
 
-Select
-    idMedia,title,banner,sub,description,nameAdd,logo,genName,Lang.type,Lang.cant,Cap_Temp.idTemp,Cap_Temp.numero,Cap_Temp.link,Cap_Temp.title
-from
-    Media M
-    join Additions_Media AM on AM.idMedia = M.idMedia
-    join Additions A on A.idAdditions = AM.idAdditions
-    join Gen_Media GM on GM.idMedia = M.idMedia
-    join MediaDetails MD on MD.idMedia = M.idMedia
-    join (
-        Select
-            LM.type ,count(*) as cant
-        from
-            Languages L,
-            Lang_Media LM
-        where
-            LM.idMedia = "ABC123456"
-        group by
-            LM.type
-    ) Lang
-    join(
-        Select idTemp,Tnumero,C.numero,link,title,description 
-        from Capitulos C,Temporadas T
-        where C.idTemp = T.idTemp
-        and T.idMedia="ABC123456"
-        order by T.numero, C.numero
-    )Cap_Temp
-    where
-    idMedia = "ABC123456"
+-----------------------------------------
+SELECT
+    banner,
+    description,
+    IMDb,
+    Annio,
+    AgeRestriction
+FROM
+    MediaDetails MD
+WHERE
+    idMedia = "ABC123456";
+
+-------------------------------
+
+Select A.NameAdd,A.Logo
+from 
+    Aditions_Media AM, Aditions A
+where AM.idMedia = "ABC123456" 
+and AM.idAddition = A.idAddition
+
+----------------------------------
+
+SELECT
+    GenName
+FROM
+    Gen_Media GM
+WHERE
+    idMedia = "ABC123456";
+
+
+
+----------------------------  
+SELECT
+    LM.type,
+    COUNT(*) AS cant
+FROM
+    Languages L,
+    Lang_Media LM
+WHERE
+    LM.idMedia = "ABC123456"
+GROUP BY
+    LM.type;
+-----------------------------
+SELECT
+    T.Tnumero,
+    C.numero,
+    C.link,
+    C.title,
+    C.description
+FROM
+    Capitulos C,
+    Temporadas T
+WHERE
+    C.idTemp = T.idTemp
+    AND T.idMedia = "ABC123456"
+ORDER BY
+    T.Tnumero,
+    C.numero;
+
+ 
 
 
 
