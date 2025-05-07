@@ -51,8 +51,7 @@ from
     Media M
 where
     M.sub = 'mitele'
-
------------------------------------------
+    -----------------------------------------
 SELECT
     banner,
     description,
@@ -65,23 +64,22 @@ WHERE
     idMedia = "ABC123456";
 
 -------------------------------
-
-Select A.NameAdd,A.Logo
-from 
-    Aditions_Media AM, Aditions A
-where AM.idMedia = "ABC123456" 
-and AM.idAddition = A.idAddition
-
-----------------------------------
-
+Select
+    A.NameAdd,
+    A.Logo
+from
+    Aditions_Media AM,
+    Aditions A
+where
+    AM.idMedia = "ABC123456"
+    and AM.idAddition = A.idAddition
+    ----------------------------------
 SELECT
     GenName
 FROM
     Gen_Media GM
 WHERE
     idMedia = "ABC123456";
-
-
 
 ----------------------------  
 SELECT
@@ -94,8 +92,8 @@ WHERE
     LM.idMedia = "ABC123456"
 GROUP BY
     LM.type;
------------------------------
 
+-----------------------------
 SELECT
     T.Tnumero,
     C.numero,
@@ -112,7 +110,33 @@ ORDER BY
     T.Tnumero,
     C.numero;
 
- 
+---------------------------------
+Select
+    UM.idMedia,
+    COUNT(UM.idUser) as cant,
+    M.title,
+    M.image,
+    M.sub
+from
+    Users_Media UM
+    join Media M on UM.idMedia = M.idMedia
+where
+    UM.idUser in (
+        select
+            idUser
+        from
+            Users_Media UM
+        where
+            UM.idMedia = "ABC123456"
+        limit
+            0, 200
+    )
+    and UM.idMedia != "ABC123456"
+GROUP BY
+    UM.idMedia
+order by
+     cant desc
+limit
+    0, 20
 
-
-
+    
