@@ -95,6 +95,7 @@ WHERE
 GROUP BY
     LM.type;
 -----------------------------
+
 SELECT
     T.Tnumero,
     C.numero,
