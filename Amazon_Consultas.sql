@@ -51,8 +51,7 @@ from
     Media M
 where
     M.sub = 'mitele'
-
------------------------------------------
+    -----------------------------------------
 SELECT
     banner,
     description,
@@ -65,23 +64,22 @@ WHERE
     idMedia = "ABC123456";
 
 -------------------------------
-
-Select A.NameAdd,A.Logo
-from 
-    Aditions_Media AM, Aditions A
-where AM.idMedia = "ABC123456" 
-and AM.idAddition = A.idAddition
-
-----------------------------------
-
+Select
+    A.NameAdd,
+    A.Logo
+from
+    Aditions_Media AM,
+    Aditions A
+where
+    AM.idMedia = "ABC123456"
+    and AM.idAddition = A.idAddition
+    ----------------------------------
 SELECT
     GenName
 FROM
     Gen_Media GM
 WHERE
     idMedia = "ABC123456";
-
-
 
 ----------------------------  
 SELECT
@@ -94,6 +92,7 @@ WHERE
     LM.idMedia = "ABC123456"
 GROUP BY
     LM.type;
+
 -----------------------------
 SELECT
     T.Tnumero,
