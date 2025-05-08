@@ -111,7 +111,40 @@ ORDER BY
     T.Tnumero,
     C.numero;
 
- 
+ --------------------------------------
+
+ Select idUser
+ from Users_Media UM
+ where UM.idMedia = "ABC123456"
+ limit 0,200
+
+ Select UM.idMedia, M.title, M.image, M.sub
+ from Users_Media UM
+ join Media M on UM.idMedia = M.idMedia
+ where UM.idUser in (select idUser from Users_Media UM where UM.idMedia = "ABC123456" limit 0,200)
+ and UM.idMedia != "ABC123456"
+ GROUP BY UM.idMedia
+ order by COUNT(*) desc
+limit 0,20
 
 
+-------------------------------
 
+Update Profiles 
+set profName='Fabian',
+image='https://www.PrimeVideo.com/images/logos/Black_Noir.jpg',
+where idUser='1001'  and idProfile = '1234567890';
+
+--------------------------------
+
+Delete from Profiles
+where idUser='1001' 
+and idProfile = '1234567890';
+
+----------------------------------
+
+Select profImage,profName
+from Profiles
+where idUser='1001'
+
+x
