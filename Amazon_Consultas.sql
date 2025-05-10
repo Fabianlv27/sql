@@ -146,4 +146,21 @@ Select profImage,profName
 from Profiles
 where idUser='1001'
 
-x
+-----------------------------------
+
+select TimeInterval,
+NameActor,
+NameMusic,
+Information
+from XRay,
+Actors,
+Music,Media
+and XRay.ContentCap = "AAB345OOJ"
+and XRay.idActor = Actors.idActor
+and XRay.idMusic = Music.idMusic
+order by TimeInterval;
+
+
+
+
+
