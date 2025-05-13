@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario UML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 30px 0;
+            color: #333;
+        }
+        form {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question p {
+            margin: 0 0 10px;
+            font-weight: bold;
+            color: #444;
+        }
+        .options label {
+            display: block;
+            margin: 6px 0;
+            padding: 8px 12px;
+            background-color: #f7f9fc;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+        .options label:hover {
+            background-color: #e3eefd;
+        }
+        #submitBtn {
+            display: block;
+            margin: 30px auto 10px;
+            padding: 12px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #submitBtn:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cuestionario UML</h1>
+    <form id="quizForm">
+        <!-- Preguntas generadas -->
+        <div class="question" id="q1">
+            <p>1. ¿Cuál es una de las responsabilidades principales del informático según el documento?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. Solo programar código siguiendo las indicaciones.</label>
+                <label><input type="radio" name="q1" value="B"> B. Analizar necesidades del cliente y definir requisitos funcionales y no funcionales.</label>
+                <label><input type="radio" name="q1" value="C"> C. Realizar únicamente pruebas de usabilidad.</label>
+                <label><input type="radio" name="q1" value="D"> D. Gestionar únicamente la infraestructura de hardware.</label>
+            </div>
+        </div>
+        <!-- ... Repetir bloques hasta q22 ... -->
+        <!-- Para brevedad aquí mostramos solo las primeras y últimas; debes completar todas -->
+        <!-- Ponemos un script que genera dinámicamente las preguntas para evitar repetir en el HTML -->
+    </form>
+    <div id="result"></div>
+    <script>
+        // Datos de preguntas y opciones
+        const questions = [
+            { text: "¿Cuál es una de las responsabilidades principales del informático según el documento?", options: ["Solo programar código siguiendo las indicaciones.", "Analizar necesidades del cliente y definir requisitos funcionales y no funcionales.", "Realizar únicamente pruebas de usabilidad.", "Gestionar únicamente la infraestructura de hardware."] },
+            { text: "En el contexto de modelado de sistemas, un \u201cmodelo\u201d se define como:", options: ["Una implementación de código ejecutable.", "Una abstracción de un elemento del sistema desde una perspectiva concreta.", "Un diagrama de clases con todos los métodos implementados.", "Un prototipo de interfaz de usuario."] },
+            { text: "¿Cuál de estos NO es un elemento estructural de UML?", options: ["Clase", "Objeto", "Interacción", "Actor"] },
+            { text: "En un diagrama de casos de uso, la relación «include» se utiliza para:", options: ["Extender un caso de uso bajo condiciones específicas.", "Reutilizar obligatoriamente otro caso de uso dentro del primero.", "Representar la herencia entre actores.", "Agrupar casos de uso relacionados funcionalmente."] },
+            { text: "El principio “80/20” de Grady Booch en UML se refiere a que:", options: ["El 80 % de los diagramas se crean en el 20 % del tiempo.", "El 80 % de los problemas se modelan con el 20 % de los elementos del lenguaje.", "El 80 % del código se genera automáticamente.", "El 20 % del modelado es suficiente para el diseño físico."] },
+            { text: "¿Cuál de las siguientes vistas NO forma parte del modelo 4+1 de Kruchten?", options: ["Vista Lógica", "Vista de Realización", "Vista de Seguridad", "Vista de Procesos"] },
+            { text: "En un diagrama de clases, ¿qué simboliza una composición fuerte?", options: ["Un rombo blanco en la clase contenedora.", "Un rombo negro en la clase contenedora.", "Una flecha hueca desde la subclase a la superclase.", "Una línea punteada entre dos clases."] },
+            { text: "El diagrama que muestra el ciclo de vida de un objeto y sus transiciones de estado se llama:", options: ["Diagrama de actividad", "Diagrama de clases", "Diagrama de estados", "Diagrama de despliegue"] },
+            { text: "¿Qué representa un nodo de decisión en un diagrama de actividades?", options: ["Un círculo relleno", "Un rectángulo con bordes redondeados", "Un rombo que bifurca el flujo según condiciones", "Una barra horizontal para concurrencia"] },
+            { text: "En un diagrama de secuencia, la “línea de vida” de un objeto se representa como:", options: ["Un rectángulo en la parte superior.", "Una flecha etiquetada con el nombre del mensaje.", "Una línea vertical punteada que indica el tiempo de existencia.", "Un círculo relleno que marca el inicio."] },
+            { text: "¿Cuál es la ventaja clave de usar diagramas UML antes de la implementación?", options: ["Reducir ambigüedades en requisitos y detectar errores de diseño temprano.", "Evitar la escritura de pruebas unitarias.", "Generar automáticamente todo el código del sistema.", "Sustituir la documentación técnica por diagramas únicamente."] },
+            { text: "En un diagrama de comunicación, los mensajes se numeran principalmente para:", options: ["Indicar la línea de vida de cada objeto.", "Mostrar el orden de las interacciones sin enfatizar el tiempo exacto.", "Representar herencia entre objetos.", "Dibujar barras de concurrencia."] },
+            { text: "¿Qué elemento de UML representa un recurso físico, como un servidor o dispositivo?", options: ["Componente", "Nodo", "Paquete", "Subsistema"] },
+            { text: "¿Cuál de los siguientes diagramas es un diagrama estructural?", options: ["Diagrama de actividad", "Diagrama de componentes", "Diagrama de secuencia", "Diagrama de estados"] },
+            { text: "En UML, un objeto se representa gráficamente como:", options: ["Rectángulo con nombre subrayado", "Rectángulo con tres compartimentos", "Óvalo etiquetado con nombre", "Figura de palo"] },
+            { text: "¿Qué elemento de agrupación se usa para organizar elementos relacionados en un sistema?", options: ["Actor", "Paquete", "Nota", "Nodo"] },
+            { text: "En el modelo 4+1 de Kruchten, la vista de implementación utiliza principalmente:", options: ["Diagramas de clases y objetos", "Diagramas de componentes y paquetes", "Diagramas de estados", "Diagramas de casos de uso"] },
+            { text: "¿Qué diagrama UML es más adecuado para mostrar la infraestructura hardware y las conexiones entre nodos?", options: ["Diagrama de despliegue", "Diagrama de comunicación", "Diagrama de clases", "Diagrama de actividad"] },
+            { text: "¿Cuál de las siguientes afirmaciones sobre un paquete en UML es correcta?", options: ["Un paquete representa una instancia concreta de una clase", "Un paquete agrupa elementos relacionados como clases y casos de uso", "Un paquete muestra el flujo de actividades", "Un paquete es un tipo de nota"] },
+            { text: "¿Cuál es la diferencia principal entre agregación y composición en UML?", options: ["Ninguna, son sinónimos", "La agregación es más fuerte que la composición", "En la agregación las partes pueden existir independientemente, en la composición no", "La composición usa rombo blanco y la agregación rombo negro"] },
+            { text: "¿Qué elemento en un diagrama de actividad indica la concurrencia de flujos?", options: ["Rombos", "Barras horizontales o verticales", "Flechas con condición", "Círculos rellenos"] },
+            { text: "El principio de sustitución en UML establece que:", options: ["Un objeto de una subclase puede sustituir a uno de la superclase sin alterar el funcionamiento del programa", "Una clase puede cambiar su nombre manteniendo funcionalidad", "Un paquete puede reemplazar a otro sin afectar al sistema", "Un diagrama de secuencia puede sustituir un diagrama de colaboración"] }
+        ];
+
+        // Clave de respuestas
+        const answerKey = {
+            1: 'B', 2: 'B', 3: 'C', 4: 'B', 5: 'B', 6: 'C', 7: 'B', 8: 'C', 9: 'C', 10: 'C',
+            11: 'A', 12: 'B', 13: 'B', 14: 'B', 15: 'A', 16: 'B', 17: 'B', 18: 'A', 19: 'B', 20: 'C',
+            21: 'B', 22: 'A'
+        };
+
+        // Generar dinámicamente preguntas
+        const form = document.getElementById('quizForm');
+        questions.forEach((q, i) => {
+            const num = i + 1;
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `
+                <p>${num}. ${q.text}</p>
+                <div class="options">
+                    ${q.options.map((opt, idx) => `
+                        <label><input type="radio" name="q${num}" value="${String.fromCharCode(65+idx)}"> ${String.fromCharCode(65+idx)}. ${opt}</label>
+                    `).join('')}
+                </div>
+            `;
+            form.appendChild(div);
+        });
+
+        // Botón de envío
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'submitBtn';
+        btn.textContent = 'Entregar y calificar';
+        btn.addEventListener('click', gradeQuiz);
+        form.appendChild(btn);
+
+        // Función de calificación
+        function gradeQuiz() {
+            let score = 0;
+            for (let i = 1; i <= questions.length; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answerKey[i]) score++;
+            }
+            document.getElementById('result').textContent = `Has obtenido ${score} de ${questions.length} correctas.`;
+        }
+    </script>
+</body>
+</html>
