@@ -160,6 +160,18 @@ and XRay.idActor = Actors.idActor
 and XRay.idMusic = Music.idMusic
 order by TimeInterval;
 
+-------------------------------------
+
+INSERT INTO Users (idUser, userName, email,userPhone,password)  -- Usa tus columnas reales aquí
+SELECT 'AAA9899', 'Fabian', 'fab@example.com',643453706,'Ajdd2'
+WHERE NOT EXISTS (
+    select userName
+    from Users
+    where userPhone = 643453706
+);
+
+
+
 
 
 

@@ -1,0 +1,7 @@
+Base: 192.168.92.0/23
+RouterCount: 1
+Subnet: a, 125
+Subnet: b, 61
+Subnet: c, 14
+Subnet: d, 1
+Subnet: e, 2

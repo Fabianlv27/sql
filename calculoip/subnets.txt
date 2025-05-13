@@ -1,106 +1,14 @@
-Base: 172.16.0.0/17
+Base: 172.16.0.0/23
 RouterCount: 3
-Subnet: a, 509
+Subnet: a, 126
 Subnet: b, 126
 Subnet: c, 61
-Subnet: d, 16
-Subnet: e, 15
-Subnet: f, 6
-Subnet: g, 5
+Subnet: d, 30
+Subnet: e, 29
+Subnet: f, 5
+Subnet: g, 3
 Subnet: h, 2
 Subnet: i, 2
 Subnet: j, 2
 
-
-
-Asignación de subredes:
-Subnet: a, 509
-Red/Prefijo: 172.16.0.0/23
-Máscara: 255.255.254.0
-Broadcast: 172.16.1.255
-Gateway: 172.16.0.1
-Hosts válidos: 172.16.0.2 - 172.16.1.254
-Hosts requeridos: 509
-Direcciones totales: 512
-
-Subnet: b, 126
-Red/Prefijo: 172.16.2.0/24
-Máscara: 255.255.255.0
-Broadcast: 172.16.2.255
-Gateway: 172.16.2.1
-Hosts válidos: 172.16.2.2 - 172.16.2.254
-Hosts requeridos: 126
-Direcciones totales: 256
-
-Subnet: c, 61
-Red/Prefijo: 172.16.3.0/26
-Máscara: 255.255.255.192
-Broadcast: 172.16.3.63
-Gateway: 172.16.3.1
-Hosts válidos: 172.16.3.2 - 172.16.3.62
-Hosts requeridos: 61
-Direcciones totales: 64
-
-Subnet: d, 16
-Red/Prefijo: 172.16.3.64/27
-Máscara: 255.255.255.224
-Broadcast: 172.16.3.95
-Gateway: 172.16.3.65
-Hosts válidos: 172.16.3.66 - 172.16.3.94
-Hosts requeridos: 16
-Direcciones totales: 32
-
-Subnet: e, 15
-Red/Prefijo: 172.16.3.96/27
-Máscara: 255.255.255.224
-Broadcast: 172.16.3.127
-Gateway: 172.16.3.97
-Hosts válidos: 172.16.3.98 - 172.16.3.126
-Hosts requeridos: 15
-Direcciones totales: 32
-
-Subnet: f, 6
-Red/Prefijo: 172.16.3.128/28
-Máscara: 255.255.255.240
-Broadcast: 172.16.3.143
-Gateway: 172.16.3.129
-Hosts válidos: 172.16.3.130 - 172.16.3.142
-Hosts requeridos: 6
-Direcciones totales: 16
-
-Subnet: g, 5
-Red/Prefijo: 172.16.3.144/29
-Máscara: 255.255.255.248
-Broadcast: 172.16.3.151
-Gateway: 172.16.3.145
-Hosts válidos: 172.16.3.146 - 172.16.3.150
-Hosts requeridos: 5
-Direcciones totales: 8
-
-Subnet: h, 2
-Red/Prefijo: 172.16.3.152/30
-Máscara: 255.255.255.252
-Broadcast: 172.16.3.155
-Gateway: 172.16.3.153
-Hosts válidos: 172.16.3.154 - 172.16.3.154
-Hosts requeridos: 2
-Direcciones totales: 4
-
-Subnet: i, 2
-Red/Prefijo: 172.16.3.156/30
-Máscara: 255.255.255.252
-Broadcast: 172.16.3.159
-Gateway: 172.16.3.157
-Hosts válidos: 172.16.3.158 - 172.16.3.158
-Hosts requeridos: 2
-Direcciones totales: 4
-
-Subnet: j, 2
-Red/Prefijo: 172.16.3.160/30
-Máscara: 255.255.255.252
-Broadcast: 172.16.3.163
-Gateway: 172.16.3.161
-Hosts válidos: 172.16.3.162 - 172.16.3.162
-Hosts requeridos: 2
-Direcciones totales: 4
 

@@ -79,13 +79,11 @@ def write_results(lines, allocations):
         f.write('\nAsignación de subredes:\n')
         for alloc in allocations:
             f.write(f"Subnet: {alloc['name']}, {alloc['usable_hosts']}\n")
-            f.write(f"Red/Prefijo: {alloc['network']}\n")
-            f.write(f"Máscara: {alloc['netmask']}\n")
+            f.write(f"Red: {alloc['network']}\n")
+            f.write(f"Mascara: {alloc['netmask']}\n")
             f.write(f"Broadcast: {alloc['broadcast']}\n")
             f.write(f"Gateway: {alloc['gateway']}\n")
-            f.write(f"Hosts válidos: {alloc['first_host']} - {alloc['last_host']}\n")
-            f.write(f"Hosts requeridos: {alloc['usable_hosts']}\n")
-            f.write(f"Direcciones totales: {alloc['allocated_size']}\n\n")
+            f.write(f"rango: {alloc['first_host']} - {alloc['last_host']}\n")
 
 
 def process_file():
